@@ -1,0 +1,215 @@
+paths:
+  /api/products:
+    get:
+      summary: Proporciona una vista paginada de una colección de documentos, junto con información relevante sobre la paginación incluido "payload" el cual contiene un arreglo que aloja todos los prodctos en formato de objeto.
+      tags:
+        - Products
+      responses:
+        "200":
+          description: Se han obtenido todos los productos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Products'
+        "404":
+          description: Products not found
+    post:
+      summary: Crea un nuevo producto
+      tags: 
+        - Products
+      responses:
+        "201":
+          description: El producto ha sido creado correctamente
+        "400":
+          description: No se pudo crear el producto  
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/requestBodies/createProduct'    
+  /api/products/{pid}:
+    get:
+      summary: Obtiene un producto en particular por su Id
+      tags: 
+        - Products
+      parameters:
+        - name: pid
+          in: path
+          description: Id del producto
+          schema:
+            type: string
+      responses:  
+        "200":
+          description: El producto se ha encontrado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/ProductPayload'
+        "400":
+          description: Error al traer producto      
+    put:
+      summary: Actualiza el producto a partir de su Id
+      tags:
+        - Products
+      parameters:
+        - name: pid
+          in: path
+          description: Id del producto que se quiera actualizar 
+          schema:
+            type: string
+      responses:
+        "200":
+          description: El producto ha sido actualizado correctamente
+        "400":
+          description: No se pudo actualizar el producto  
+      requestBody:      
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/requestBodies/updateProduct' 
+  
+    delete:
+      summary: Elimina el producto a partir de su Id
+      tags: 
+        - Products
+      parameters:
+        - name: pid
+          in: path
+          description: Id del producto que se quiera eliminar
+          schema:
+            type: string
+      responses:
+        "200":
+          description: El producto se ha eliminado correctamente
+        "400":
+          description: No se pudo eliminar el producto                  
+
+
+components:
+  schemas:
+    ProductPayload:
+      type: array
+      items:
+        type: object
+        properties:
+          _id:
+            type: string
+            description: Identificador único del documento
+          title:
+            type: string
+            description: Título del producto
+          description:
+            type: string
+            description: Descripción del producto
+          price:
+            type: number
+            description: Precio del producto
+          code:
+            type: string
+            description: Código del producto
+          stock:
+            type: integer
+            description: Cantidad en stock del producto
+          status:
+            type: boolean
+            description: Estado del producto
+          available:
+            type: string
+            description: Disponibilidad del producto
+          category:
+            type: string
+            description: Categoría del producto
+          owner:
+            type: string
+            description: Propietario del producto
+          __v:
+            type: integer
+            description: Versión del documento
+    Products:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Estado de la respuesta
+        totalDocs:
+          type: integer
+          description: Total de documentos encontrados
+        limit:
+          type: integer
+          description: Límite de documentos por página
+        totalPages:
+          type: integer
+          description: Total de páginas
+        page:
+          type: integer
+          description: Página actual
+        pagingCounter:
+          type: integer
+          description: Contador de paginación
+        hasPrevPage:
+          type: boolean
+          description: Indica si hay una página anterior
+        hasNextPage:
+          type: boolean
+          description: Indica si hay una página siguiente
+        prevPage:
+          type: integer
+          description: Número de página anterior
+        nextPage:
+          type: integer
+          description: Número de página siguiente
+        payload:
+          $ref: '#/components/schemas/ProductPayload'
+  requestBodies:
+    createProduct:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Nombre del producto
+        description:
+          type: string 
+          description: Descripción del producto
+        price: 
+          type: number
+          description: Precio del producto
+        code: 
+          type: string
+          description: Codigo del producto elegido por el usuario (luego el producto se carga con un Id de mongo)
+        stock:
+          type: number
+          description: Cantidad de unidades del producto al ingresar
+        category:
+          type: string
+          description: Categoría del producto
+        thumbnail: 
+          type: string
+          description: Imagen del producto    
+      example:
+        title: Placa de video
+        description: Placa de video 8-GB
+        price: 80
+        code: 0001
+        stock: 255
+        category: Tecnología
+        thumbnail: Url
+    updateProduct:
+      type: object
+      properties:
+        $ref: '#components/schemas/ProductPayload'       
+      example:
+        title: Placa de video
+        description: Placa de video 8-GB
+        price: 80
+        code: 0001
+        stock: 255
+        category: Tecnología
+        thumbnail: Url
+
+
+
+

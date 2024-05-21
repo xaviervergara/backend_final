@@ -1,0 +1,65 @@
+<div class='title_main'>
+  <div class='titleContainer'>
+    <h1>Productos</h1>
+    <button class='cartButton'><a href='/cart'>Carrito</a></button>
+  </div>
+</div>
+
+<div class='back-home_container'>
+  <a class='back-home_link' href='/'>Home</a>
+</div>
+
+<h2 class='user_bienvenida' data-cart-id={{user.cart}}></h2>
+
+{{#each products.payload}}
+  {{!-- <div
+    class='product_container'
+    id='productosContainer'
+    data-cart-id='{{user.cart}}'
+  > --}}
+  <div class='product_container' id={{user.cart}}>
+    <div class='keyValue_container'><p class='product_key'>Master Id:</p>
+      {{this._id}}</div>
+    <div class='keyValue_container'><p class='product_key'>Nombre:</p>
+      {{this.title}}</div>
+    <div class='keyValue_container'><p class='product_key'>Descripción:</p>
+      {{this.description}}</div>
+    <div class='keyValue_container'><p class='product_key'>Precio:</p>
+      {{this.price}}</div>
+    <div class='keyValue_container'><p class='product_key'>Sku:</p>
+      {{this.code}}</div>
+    <div class='keyValue_container'><p class='product_key'>Stock:</p>
+      {{this.stock}}</div>
+    <div class='keyValue_container'><p class='product_key'>Status:</p>
+      {{this.status}}</div>
+    <div class='keyValue_container'><p class='product_key'>Disponible:</p>
+      {{this.available}}</div>
+    <div class='keyValue_container'><p class='product_key'>Categoria:</p>
+      {{this.category}}</div>
+
+    <button class='btn_addToCart' id='{{this._id}}'>Agregar al carrito</button>
+    <button class='btn_dltProduct' id='{{this._id}}'>Eliminar producto</button>
+  </div>
+
+{{/each}}
+
+<div class='logoutBtn_container'><button id='logoutBtn' type='button'>Cerrar
+    sesión</button></div>
+
+<div class='btnPage_container'>
+  {{#if products.hasPrevPage}}
+    <button class='btn_page'><a
+        class='link_page'
+        href='/products?page={{products.prevPage}}'
+      >Anterior</a></button>
+  {{/if}}
+
+  {{#if products.hasNextPage}}
+    <button class='btn_page'><a
+        class='link_page'
+        href='/products?page={{products.nextPage}}'
+      >Siguiente</a></button>
+  {{/if}}
+</div>
+
+<script src='js/products.js'></script>

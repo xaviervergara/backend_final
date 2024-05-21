@@ -1,0 +1,103 @@
+* {
+  padding: 0;
+  margin: 0;
+  background-color: rgb(243, 248, 242);
+}
+a {
+  text-decoration: none;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+h1 {
+  margin: 0.3em;
+}
+
+.back-home_container {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 0.5em;
+  margin-left: 4.4em;
+}
+
+.back-home_link {
+  padding: 0.3em;
+  color: rgb(243, 248, 242);
+  background-color: rgb(104, 39, 45);
+  font-size: 1em;
+  border-radius: 5px;
+  margin-right: 0.5em;
+}
+
+.main-container {
+  /* border: 1px solid red; */
+  height: 100%;
+  width: 100%;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.usersList-container {
+  justify-content: center;
+  /* align-items: center; */
+  border: 1px solid rgb(104, 39, 45);
+  /* background-color: rgb(230, 242, 249); */
+  border-radius: 25px;
+  height: 90%;
+  /* width: 90%; */
+  margin-left: 3em;
+  margin-right: 3em;
+  margin-bottom: 3em;
+}
+
+.user-container {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(26, 43, 55);
+  margin: 0.5em;
+}
+
+.element-container {
+  display: flex;
+  justify-content: flex-start;
+  padding: 1em;
+  width: 25%;
+  /* border: 1px solid red; */
+}
+
+.p-key {
+  border-radius: 5px;
+  color: rgb(243, 248, 242);
+  background-color: rgb(26, 43, 55);
+  padding: 0.3em;
+}
+
+.p-value {
+  padding: 0.3em;
+  border-radius: 5px;
+  /* color: rgb(243, 248, 242); */
+
+  margin-left: 0.5em;
+}
+.role-button,
+.user-button {
+  margin-left: 2em;
+  border-radius: 5px;
+  color: rgb(243, 248, 242);
+  background-color: rgb(104, 39, 45);
+  padding: 0.3em;
+  cursor: pointer;
+  border: none;
+}
+
+/* 
+rgb(243, 248, 242)blanco
+rgb(104, 39, 45)wine
+rgb(184, 209, 224)columbia blue
+rgb(16, 47, 66)prussian blue
+rgb(26, 43, 55)gunmetal */

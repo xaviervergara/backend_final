@@ -1,0 +1,50 @@
+<main>
+  <h1>Listado de productos en tiempo real</h1>
+  <div class='mainContainer'>
+    <div class='formContainer'>
+      {{! Formulario para agregar producto }}
+      <form
+        enctype='application/x-www-form-urlencoded'
+        {{! action='/realtimeproducts' }}
+        class='addForm'
+        id='addForm'
+        {{! method='post' }}
+      >
+        <label for='title'>Nombre:</label>
+        <input type='text' name='title' id='title' />
+        <label for='description'>Descripción:</label>
+        <input type='text' name='description' id='description' />
+        <label for='code'>SKU:</label>
+        <input type='number' name='code' id='code' />
+        <label for='price'>Precio:</label>
+        <input type='number' name='price' id='price' />
+        <label for='available'>Disponible:</label>
+        <input type='text' name='available' id='available' />
+        <label for='stock'>Stock:</label>
+        <input type='number' name='stock' id='stock' />
+        <label for='category'>Categoria:</label>
+        <input type='text' name='category' id='category' />
+        <button type='submit'>Agregar</button>
+      </form>
+      {{! Formulario para borrar producto }}
+      <form class='deleteForm' id='deleteForm'>
+        <h2>Eliminar producto</h2>
+        <label for='pid'>Product Id:</label>
+        <input type='string' name='pid' id='pid' />
+        <button type='submit'>Eliminar</button>
+      </form>
+    </div>
+    <div class='listContainer'>
+      <ul id='productList' class='product-list'></ul>
+    </div>
+  </div>
+  <div>
+
+  </div>
+</main>
+
+{{! instancia de socket.io }}
+<script src='/socket.io/socket.io.js'></script>
+
+{{! index.js }}
+<script src='js/index.js'></script>

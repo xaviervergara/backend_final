@@ -1,0 +1,27 @@
+<div class='main_container'>
+  <h1>User Login</h1>
+
+  <form class='form_container' action='/api/sessions/login' method='post'>
+
+    {{! Email }}
+    <label for=''>Email:</label>
+    <input type='email' name='email' /><br /><br />
+
+    {{! password }}
+    <label for=''>Password:</label>
+    <input type='password' name='password' /><br /><br />
+    <button type='submit'>Iniciar sesión</button>
+
+    {{! boton github login }}
+
+    <button type='button'><a href='/api/sessions/github'>¡Login with Github!</a></button>
+
+    {{! boton ir a registro }}
+    <button type='button'><a href='/register'>¿No estás registrad@? ¡Crea una
+        cuenta!</a></button>
+
+    {{! boton restaurar pass }}
+    <button type='button'><a href='/restore-email'>¿Olvidaste tu contraseña?</a></button>
+    {{! <button type='button'><a href='/restore-password'>¿Olvidaste tu contraseña?</a></button> }}
+  </form>
+</div>

@@ -1,0 +1,76 @@
+<div class='titleContainer'>
+  <h1>API Rest || E-commerce</h1>
+</div>
+
+<div class='infoRow'>
+
+  <div class='userInfoContainer' data-user-id={{user.id}}>
+    <div class='nameContainer'>
+      <p class='userWelcome'>
+        {{user.first_name}}
+        {{user.last_name}}
+      </p>
+    </div>
+    <div class='liContainer'>
+      <ul>
+        <li>E-mail: {{user.email}}</li>
+        <li>Rol: "{{user.role}}"</li>
+        <li>Id de usuario: "{{user.id}}"</li>
+        <li>Id de carrito: "{{user.cart}}"</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class='buttonsContainer'>
+
+    {{! ACCIONES PUBLICAS }}
+    <button class='linkBtn'><a class='toolsLink' href='/products'>Ver productos</a></button>
+    <button class='linkBtn'><a class='toolsLink' href='/cart'>Ver carrito</a></button>
+
+    {{! SOLO ADMIN O PREMIUM PUEDEN AGREGAR PRODUCTOS Y CAMBIAR ROL }}
+    {{#equal user.role 'admin'}}
+      <button class='linkBtn'><a class='toolsLink' href='/add-product'>Agregar
+          producto</a></button>
+      <button id='switchRole_btn' class='linkBtn roleBtn' type='button'>Cambiar
+        rol</button>
+    {{else}}
+      {{#equal user.role 'premium'}}
+        <button class='linkBtn'><a class='toolsLink' href='/add-product'>Agregar
+            producto</a></button>
+        <button
+          id='switchRole_btn'
+          class='linkBtn roleBtn'
+          type='button'
+        >Cambiar rol</button>
+      {{/equal}}
+    {{/equal}}
+
+    {{! SOLO ADMIN PUEDE AGREGAR USUARIO, VER USUARIO }}
+    {{#equal user.role 'admin'}}
+      <button class='linkBtn'><a class='toolsLink' href='/add-user'>Agregar
+          usuario</a></button>
+
+      <button class='linkBtn'><a class='toolsLink' href='/users'>Ver usuarios</a></button>
+    {{/equal}}
+
+  </div>
+
+</div>
+
+<footer>
+  <button id='logoutBtn' type='button' class='logOutBtn'>
+    Cerrar sesion
+  </button>
+</footer>
+{{! SOCKET.IO CONFIG DESDE EL CLIENTE }}
+
+{{! Al instalar socket.io se sirve el archivo que vemos en el enlace de abajo. Nosotros utilizamos este archivo
+que nos proporciona la libreria, para la configuracion de socket.io desde el cliente}}
+{{!
+<script src='/socket.io/socket.io.js'></script> }}
+{{! Importamos el index.js, que tambien lo vamos a usar aquí, osea del lado del cliente }}
+{{! Siempre se importa el index.js luego del socket, nunca antes }}
+{{!
+<script src='js/home.js'></script> }}
+
+<script type='module' src='js/home.js'></script>

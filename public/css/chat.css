@@ -1,0 +1,33 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: monospace;
+  background-color: rgb(42, 48, 53);
+  color: azure;
+}
+
+h1 {
+  text-align: center;
+  background-color: DarkSeaGreen;
+  border-radius: 15px;
+  font-size: 3em;
+  margin: 1.3em;
+  padding: 0.5em;
+}
+
+#inputData {
+  border-radius: 15px;
+  font-size: 2em;
+  width: 100%;
+  padding: 0.5em;
+  margin: 1.3em;
+  width: 50%;
+}
+
+#outputData {
+  font-size: 2em;
+  width: 100%;
+  padding: 0.5em;
+  margin: 1.3em;
+  width: 50%;
+}

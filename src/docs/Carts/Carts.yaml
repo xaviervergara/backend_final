@@ -1,0 +1,280 @@
+paths:
+  /api/carts:
+
+    get:
+      summary: Obtiene todos los carritos
+      tags:
+        - Carts
+      responses:
+        "200":
+          description: Se han obtenido todos los carritos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Carts'
+        "400":
+          description: Error al traer carritos
+
+    post:
+      summary: Crea un nuevo carrito
+      tags:   
+        - Carts
+      responses:
+        "201": 
+          description: El carrito se ha creado correctamente
+        "400":
+          description: Error al crear carrito
+      requestBody:
+
+        required: true
+        content:
+
+          application/json:
+
+            schema:
+
+              $ref: '#components/requestBodies/createCart'     
+
+  /api/carts/{cid}:
+
+    get: 
+      summary: Obtiene un carrito en particular por su Id
+      tags: 
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          description: Id del carrito
+          schema:
+            type: string
+      responses:
+        "200":
+          description: El carrito se ha encontrado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/Carts'
+        "404":  
+         description: Error al traer carrito
+
+    delete:    
+      summary: Elimina todos los productos de un carrito determinado por su Id (vaciar carrito)
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          description: Id del carrito
+          schema:
+            type: string   
+      responses:
+        "200":
+          description: El carrito se vacio correctamente
+        "400":
+          description: Error al vaciar carrito      
+
+  /api/carts/{cid}/product/{pid}:  
+
+    post:
+      summary: Agrega producto a carrito
+      parameters:
+        - name: cid
+          in: path
+          description: Id del carrito
+          schema:
+            type: string
+        - name: pid
+          in: path
+          description: Id del producto
+          schema:
+            type: string   
+      tags: 
+        - Carts
+      responses:
+        "201":
+          description: Se agregó el producto al carrito correctamente
+        "400":
+          description: Error al agregar producto al carrito  
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/requestBodies/AddProductToCartRequest' 
+
+/api/carts/:cid/purchase:
+  
+  get:
+    summary: Obiene un ticket con la información de compra segun el Id del carrito
+    parameters:
+        - name: cid
+          in: path
+          description: Id del carrito
+          schema:
+            type: string
+    tags:
+      - Carts        
+    responses:
+      "200":
+        description: El ticket de compra se obtuvo correctamente   
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/PurchaseResponse'  
+      "400":
+        description: 'No se pudo hacer la compra, los siguientes productos no cuentan con stock suficiente '       
+      "404":
+        description: Error al obtener ticket de compra           
+
+    
+    delete:
+      summary: Elimina un producto por su Id de un carrito determinado por su Id
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          description: Id del carrito
+          schema:
+            type: string
+        - name: pid
+          in: path
+          description: Id del producto
+          schema:
+            type: string
+      responses:
+        "200":
+          description: El prodcto ha sido eliminado correctamente del carrito
+        "400":
+          description: Error al eliminar producto del carrito  
+
+components:
+
+  schemas:
+    Carts:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Id de mongo autogenerado
+        products:
+          type: array
+          items:
+            type: object
+            properties:
+              product:
+                type: string
+                format: string
+                description: Id del producto
+              quantity:
+                type: integer
+                description: Cantidad del producto en el carrito
+
+    Purchase:
+      type: object
+      properties:
+        product:
+          type: object
+          properties:
+            _id:
+              type: string
+              description: Id del producto
+            title:
+              type: string
+              description: Título del producto
+            description:
+              type: string
+              description: Descripción del producto
+            price:
+              type: number
+              description: Precio del producto
+            code:
+              type: string
+              description: Código del producto
+            stock:
+              type: integer
+              description: Cantidad en stock del producto
+            status:
+              type: boolean
+              description: Estado del producto
+            available:
+              type: string
+              description: Disponibilidad del producto
+            category:
+              type: string
+              description: Categoría del producto
+            owner:
+              type: string
+              description: Propietario del producto
+            __v:
+              type: integer
+              description: Versión del documento
+        quantity:
+          type: integer
+          description: Cantidad del producto en el carrito
+        _id:
+          type: string
+          description: Id del producto en el carrito
+
+    Details:
+      type: object
+      properties:
+        purchaser:
+          type: string
+          description: Correo electrónico del comprador
+        amount:
+          type: number
+          description: Monto total de la compra
+        code:
+          type: integer
+          description: Código de la compra
+        purchase_datetime:
+          type: string
+          format: date-time
+          description: Fecha y hora de la compra
+          
+    PurchaseResponse:
+      type: object
+      properties:
+        purchase:
+          type: array
+          items:
+            $ref: '#/components/schemas/Purchase'
+          description: Lista de productos comprados
+        outOfStock:
+          type: array
+          items:
+            type: object
+          description: Lista de productos fuera de stock (vacío en este ejemplo)
+        details:
+          $ref: '#/components/schemas/Details'
+          description: Detalles de la compra  
+  requestBodies:
+    createCart:
+      type: object        
+      properties:
+        schema:  
+          $ref: '#components/schemas/Carts'
+    AddProductToCartRequest:
+      type: object
+      properties:
+        cid:
+          type: string
+          description: Id del carrito
+          example: "cartId123"
+        pid:
+          type: string
+          description: Id del producto que se va a agregar al carrito
+          example: "productId123"
+      required:
+        - cid
+        - pid
+          
+          
+
+      #  TODO: COLOCAR CORRECTAMENTE LAS RUTAS DE PRODUCT QUE USEN PARAMETROS
+
+        
+

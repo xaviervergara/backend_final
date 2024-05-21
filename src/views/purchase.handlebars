@@ -1,0 +1,39 @@
+<header>
+  <h1>Datos de compra</h1>
+</header>
+
+<main>
+  <div class='info-container'>
+
+    <div class='user-info'>
+      <div>
+        <p>Comprador:</p>
+        <p>{{ticket.purchaser}}</p>
+      </div>
+
+      <div>
+        <p>Se abonó:</p>
+        <p>$ {{ticket.amount}}</p>
+      </div>
+    </div>
+
+    <div class='prod-container'>
+      <p>Productos:</p>
+
+      <div class='prod-props'>
+        {{#each ticket.purchase}}
+          <div class='props-container'>
+            <p class='top-prop'>Articulo: {{this.product.title}}</p>
+            <p>Id: {{this.product._id}}</p>
+            <p>Precio: {{this.product.price}}</p>
+            <p class='bottom-prop'>Cantidad: {{this.quantity}} </p>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+    <a class='end-btn' href='/'>Volver a inicio</a>
+
+  </div>
+</main>
+
+<script src='js/purchase.js'></script>

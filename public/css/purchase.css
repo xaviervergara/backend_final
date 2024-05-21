@@ -1,0 +1,56 @@
+* {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: rgb(243, 248, 242); */
+}
+
+a {
+  text-decoration: none;
+}
+
+main {
+  background-color: rgb(243, 248, 242);
+}
+
+h1 {
+  color: rgb(26, 43, 55);
+}
+p {
+  margin: 0.1em;
+  color: rgb(243, 248, 242);
+}
+
+.user-info {
+  background-color: rgb(26, 43, 55);
+  border: 1px solid black;
+  border-radius: 25px;
+  margin: 1em;
+  padding: 1em;
+}
+
+.prod-container {
+  background-color: rgb(26, 43, 55);
+  border: 1px solid black;
+  border-radius: 25px;
+  margin: 1em;
+  padding: 1em;
+}
+
+.props-container {
+  color: rgb(243, 248, 242);
+  margin: 0.5em;
+  padding: 0.5em;
+  border-bottom: 1px solid rgb(243, 248, 242);
+}
+
+.end-btn {
+  color: rgb(243, 248, 242);
+  background-color: rgb(26, 43, 55);
+  border-radius: 8px;
+  font-size: 1.1em;
+  padding: 0.2em;
+  cursor: pointer;
+  border: none;
+}

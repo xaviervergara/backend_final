@@ -1,0 +1,57 @@
+<div class='title-container'><h1>Carrito</h1></div>
+<div class='main-container' data-cart-id={{user.cart}}>
+  <div class='back-home_container'>
+    <a class='back-home_link' href='/'>Home</a>
+    <a class='back-home_link' href='/products'>Productos</a>
+  </div>
+
+  {{#each cart.products}}
+
+    <div class='cart-container'>
+      <div class='list-item'>
+        <div class='item-key'>Nombre:</div>
+        <div class='item-value'>{{this.product.title}}</div>
+      </div>
+      <div class='list-item'>
+        <div class='item-key'>Descripción:</div>
+        <div class='item-value'>{{this.product.description}}</div>
+      </div>
+      <div class='list-item'>
+        <div class='item-key'>Precio:</div>
+        <div class='item-value'>{{this.product.price}}</div>
+      </div>
+      <div class='list-item'>
+        <div class='item-key'>SKU:</div>
+        <div class='item-value'>{{this.product.code}}</div>
+      </div>
+      <div class='list-item'>
+        <div class='item-key'>Stock:</div>
+        <div class='item-value'>{{this.product.stock}}</div>
+      </div>
+      <div class='list-item'>
+        <div class='item-key'>Status:</div>
+        <div class='item-value'>{{this.product.status}}</div>
+      </div>
+      <div class='list-item'>
+        <div class='item-key'>Disponible:</div>
+        <div class='item-value'>{{this.product.available}}</div>
+      </div>
+      <div class='list-item'>
+        <div class='item-key'>Categoria:</div>
+        <div class='item-value'>{{this.product.category}}</div>
+      </div>
+      <div class='list-item'>
+        <div class='item-key'>Propietario:</div>
+        <div class='item-value'>{{this.product.owner}}</div>
+      </div>
+
+      <div>CANTIDAD EN CARRITO: {{this.quantity}}</div>
+      <button class='dlt_prod' id={{this.product._id}}>Eliminar producto</button>
+    </div>
+
+  {{/each}}
+  <button id='empty_cart'>Vaciar carrito</button>
+  <button id='purchase_btn'>Realizar compra</button>
+</div>
+
+<script src='js/ownerCart.js'></script>

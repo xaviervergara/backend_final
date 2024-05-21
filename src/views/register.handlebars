@@ -1,0 +1,26 @@
+<h1>User register</h1>
+
+<form action='/api/sessions/register' method='post'>
+  {{! nombre }}
+  <label for=''>Nombre:</label>
+  <input type='text' name='first_name' /><br /><br />
+
+  {{! apellido }}
+  <label for=''>Apellido:</label>
+  <input type='text' name='last_name' /><br /><br />
+
+  {{! email }}
+  <label for=''>Email:</label>
+  <input type='email' name='email' /><br /><br />
+
+  {{! edad }}
+  <label for=''>Edad:</label>
+  <input type='number' name='age' /><br /><br />
+
+  {{! pass }}
+  <label for=''>Password:</label>
+  <input type='password' name='password' /><br /><br />
+
+  {{! button }}
+  <button type='submit'>Registrarme</button>
+</form>

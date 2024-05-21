@@ -1,0 +1,209 @@
+body {
+  /* background-color: rgb(30, 32, 36); */
+  background-color: rgb(243, 248, 242);
+
+  /* color: rgb(223, 220, 220); */
+  /* color: rgb(26, 43, 55); */
+  padding: 0;
+  margin: 0;
+  /* border: 2px solid red; */
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+h1 {
+  margin: 0.5em;
+  padding: 0.1em;
+  border: 2px solid rgb(26, 43, 55);
+  border-radius: 6px;
+  display: inline-block;
+  color: rgb(26, 43, 55);
+  /* display: flex; */
+  justify-content: center;
+  font-size: 3em;
+}
+
+.infoRow {
+  /* border: 5px solid rgb(185, 101, 101); */
+  display: flex;
+  height: 50%;
+}
+
+.userInfoContainer {
+  background-color: rgb(26, 43, 55);
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5em;
+  margin: 1em;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+.userInfoContainer .nameContainer {
+  margin-bottom: 1em;
+}
+
+.userInfoContainer ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.userInfoContainer ul li {
+  margin-bottom: 0.5em;
+  text-align: left; /* Alinea el texto a la izquierda */
+}
+
+.nameContainer {
+  border-bottom: 1px solid rgb(243, 248, 242);
+  margin-bottom: 1em;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.userWelcome {
+  font-size: 2.5em;
+  margin: 0;
+  /* margin-bottom: 0.1em; */
+}
+
+.liContainer {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+
+  /* border: 1px solid red; */
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+  font-size: 1.3em;
+}
+li {
+  margin-bottom: 0.5em;
+}
+
+/* .label {
+  color: Brown;
+} */
+
+.buttonsContainer {
+  background-color: rgb(26, 43, 55);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0.5em;
+  margin: 1em;
+  /* border: 2px solid rgb(125, 99, 93); */
+  border-radius: 10px;
+}
+
+.linkBtn {
+  padding: 0;
+  background-color: rgb(26, 43, 55);
+  border: none;
+  border-radius: 5px;
+  width: 8em;
+  height: 4em;
+  margin: 1em;
+  border: 1px solid rgb(243, 248, 242);
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Agregar transición para cambiar el color de fondo */
+  position: relative; /* Añadir posición relativa al contenedor */
+}
+
+.linkBtn:hover {
+  background-color: rgba(
+    33,
+    52,
+    66,
+    0.8
+  ); /* Cambiar el color de fondo al hacer hover */
+}
+
+.linkBtn:active {
+  background-color: rgb(
+    26,
+    43,
+    55
+  ); /* Cambiar el color de fondo al hacer clic */
+}
+
+.toolsLink {
+  text-decoration: none;
+  color: rgb(243, 248, 242);
+  font-size: 1.3em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.roleBtn {
+  color: rgb(243, 248, 242);
+  /* font-size: 1em; */
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 10%;
+  position: fixed;
+  bottom: 0;
+  width: 95%;
+  text-align: center;
+  /* border: 2px solid blue; */
+  border-top: 1px solid rgb(26, 43, 55);
+}
+
+@media (min-width: 768px) {
+  footer {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.logOutBtn {
+  background-color: rgb(26, 43, 55);
+  color: rgb(243, 248, 242);
+  border: none;
+  border-radius: 5px;
+  width: 7em;
+  height: 3em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logOutBtn:hover {
+  background-color: rgb(
+    14,
+    22,
+    29,
+    0.8
+  ); /* Cambiar el color de fondo al hacer hover */
+}
+
+.logOutBtn:active {
+  background-color: rgba(
+    14,
+    22,
+    29
+  ); /* Cambiar el color de fondo al hacer clic */
+}

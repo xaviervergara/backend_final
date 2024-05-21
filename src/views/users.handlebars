@@ -1,0 +1,53 @@
+<header>
+  <h1>Panel de usuarios. Bienvenid@
+    {{currentUser.first_name}}
+    {{currentUser.last_name}}, tu rol es:
+    {{currentUser.role}}</h1>
+</header>
+<div class='back-home_container'>
+  <a class='back-home_link' href='/'>Home</a>
+</div>
+<main class='main-container'>
+
+  <div class='usersList-container'>
+
+    {{#each users}}
+
+      <div class='user-container'>
+
+        <div class='element-container'>
+          <p class='p-key'>Nombre:</p>
+          <p class='p-value'>{{this.first_name}} {{this.last_name}}</p>
+        </div>
+        <div class='element-container'>
+          <p class='p-key'>Email:</p>
+          <p class='p-value'>{{this.email}}</p>
+        </div>
+        <div class='element-container'>
+          <p class='p-key'>Cart-Id:</p>
+          <p class='p-value'>{{this.cart}}</p>
+        </div>
+        <div class='element-container'>
+          <p class='p-key'>Rol:</p>
+          <p class='p-value'>{{this.role}}</p>
+        </div>
+        <div class='element-container'>
+          {{#equal this.role 'admin'}}
+            <button class='role-button' data-id='{{this._id}}'>Cambiar rol</button>
+
+          {{/equal}}
+          {{#equal this.role 'premium'}}
+            <button class='role-button' data-id='{{this._id}}'>Cambiar rol</button>
+
+          {{/equal}}
+          <button class='user-button' data-id='{{this._id}}'>Eliminar</button>
+        </div>
+
+      </div>
+    {{/each}}
+
+  </div>
+
+</main>
+
+<script src='/js/users.js'></script>
