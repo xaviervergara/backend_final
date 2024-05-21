@@ -22,5 +22,6 @@ export const getVariables = (options) => {
     mailingService: process.env.MAILING_SERVICE,
     mailingUser: process.env.MAILING_USER,
     mailingPassword: process.env.MAILING_PASSWORD,
+    apiUrl: process.env.RAILWAY_URL,
   };
 };
