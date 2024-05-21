@@ -5,8 +5,8 @@
 //!                                               ░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 // importamos express
-// Importamos cors
 import express from 'express';
+// Importamos cors
 import cors from 'cors';
 // Importamos handlebars
 import handlebars from 'express-handlebars';
@@ -59,8 +59,6 @@ import { delete_inactive_user } from './utils/cron.js';
 //*                                               ░░░░░░░░APLICACION░░░░░░░░░
 //*                                               ░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-app.use(cors());
-
 // Instanciamos ProductManager
 const productManager = new ProductManager('../../productos.json');
 
@@ -84,6 +82,9 @@ const PORT = port;
 
 // Iniciamos la app
 const app = express();
+
+// middleware cors (acepta cualquier solicitud)
+app.use(cors());
 
 // Middleware de logger
 
