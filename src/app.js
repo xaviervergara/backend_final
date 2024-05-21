@@ -5,7 +5,9 @@
 //!                                               ░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 // importamos express
+// Importamos cors
 import express from 'express';
+import cors from 'cors';
 // Importamos handlebars
 import handlebars from 'express-handlebars';
 // Importar helper de hbs
@@ -56,6 +58,8 @@ import { delete_inactive_user } from './utils/cron.js';
 //*                                               ░░░░░░░░░░░░░░░░░░░░░░░░░░░
 //*                                               ░░░░░░░░APLICACION░░░░░░░░░
 //*                                               ░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+app.use(cors());
 
 // Instanciamos ProductManager
 const productManager = new ProductManager('../../productos.json');
