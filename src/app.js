@@ -54,6 +54,8 @@ import swaggerUiExpress from 'swagger-ui-express';
 import { swaggerConfiguration } from './config/swagger.config.js';
 // Funcion de node-cron para automatizar la limpieza de users inactivos
 import { delete_inactive_user } from './utils/cron.js';
+// Importamos ruta para buscar la variable de entorno que determina la url principal de los endpoints
+import resourcesRouter from './routes/resourcesUrl.routes.js';
 
 //*                                               ░░░░░░░░░░░░░░░░░░░░░░░░░░░
 //*                                               ░░░░░░░░APLICACION░░░░░░░░░
@@ -154,6 +156,7 @@ app.use('/', viewsRouter);
 app.use('/api/sessions', sessionRoutes);
 app.use('/api/logs', loggerRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/resources-url', resourcesRouter);
 
 //!MIDDLEWARE ERROR-HANDLER
 
