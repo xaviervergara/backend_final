@@ -230,7 +230,7 @@ export const cartPurchase_service = async (req, res) => {
 
     res.send({
       ticket,
-      redirect: 'http://localhost:8080/purchase',
+      redirect: '/purchase',
     });
     //!Luego, vaciamos el carrito
     await cartManager.deleteAllProductsInCart(cId);

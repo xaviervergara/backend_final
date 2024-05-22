@@ -16,16 +16,13 @@ const cartId = userWelcome.getAttribute('data-cart-id');
 
 const addProductToCart = async (pId, cartId) => {
   try {
-    const response = await fetch(
-      `http://localhost:8080/api/carts/${cartId}/product/${pId}`,
-      {
-        // body: null, //si se manda body hacerle un JSON.strigify
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+    const response = await fetch(`/api/carts/${cartId}/product/${pId}`, {
+      // body: null, //si se manda body hacerle un JSON.strigify
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
     if (response.status === 403) {
       alert('User premium no puede agregar sus propios productos al cart');
@@ -49,7 +46,7 @@ for (let button of btns_addToCart) {
 
 const deleteProduct = async (pId) => {
   try {
-    const response = await fetch(`http://localhost:8080/api/products/${pId}`, {
+    const response = await fetch(`/api/products/${pId}`, {
       // body: null, //si se manda body hacerle un JSON.strigify
       method: 'DELETE',
     });
@@ -81,7 +78,7 @@ for (let button of btns_dltProduct) {
 //!LOGICA PARA EL BOTON LOGOUT
 
 logoutBtn.addEventListener('click', async (event) => {
-  const result = await fetch('http://localhost:8080/api/sessions/logout', {
+  const result = await fetch('/api/sessions/logout', {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
   });

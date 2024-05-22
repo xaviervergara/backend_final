@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
           `¿Está seguro de que desea eliminar al usuario con ID: ${userId}?`
         )
       ) {
-        fetch(`http://localhost:8080/api/users/delete/${userId}`, {
+        fetch(`/api/users/delete/${userId}`, {
           method: 'DELETE',
         })
           .then((response) => response.json())
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', (event) => {
       const userId = button.getAttribute('data-id');
 
-      fetch(`http://localhost:8080/api/users/premium/${userId}`, {
+      fetch(`/api/users/premium/${userId}`, {
         method: 'PUT',
       })
         .then((response) => response.json())

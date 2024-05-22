@@ -7,7 +7,7 @@ for (let button of dlt_product) {
   button.addEventListener('click', async (event) => {
     if (confirm(`Está seguro que desea eliminar el producto: ${button.id}`)) {
       const response = await fetch(
-        `http://localhost:8080/api/carts/${cart_id}/product/${button.id}`,
+        `/api/carts/${cart_id}/product/${button.id}`,
         {
           method: 'DELETE',
         }
@@ -23,7 +23,7 @@ const empty_cart = document.getElementById('empty_cart');
 
 empty_cart.addEventListener('click', async (event) => {
   if (confirm(`Está seguro que desea vaciar el carrito?`)) {
-    const response = await fetch(`http://localhost:8080/api/carts/${cart_id}`, {
+    const response = await fetch(`/api/carts/${cart_id}`, {
       method: 'DELETE',
     });
     if (response.status === 204) {
@@ -40,12 +40,9 @@ empty_cart.addEventListener('click', async (event) => {
 const purchase_btn = document.getElementById('purchase_btn');
 
 purchase_btn.addEventListener('click', async (event) => {
-  const response = await fetch(
-    `http://localhost:8080/api/carts/${cart_id}/purchase`,
-    {
-      method: 'GET',
-    }
-  );
+  const response = await fetch(`api/carts/${cart_id}/purchase`, {
+    method: 'GET',
+  });
   if (response.status === 204) {
     alert(`Empty cart`);
   }
