@@ -4,6 +4,7 @@ import { userModel } from '../DAO/models/user.model.js';
 import { createHash, isValidPassword } from '../utils/bcyrpt.js';
 import { DateTime } from 'luxon';
 import { userTimeZone } from '../config/luxon.config.js';
+import fetchResourceUrl from '../../public/js/utils.js';
 
 //!Register
 
@@ -49,6 +50,12 @@ export const login_service = async (req, res) => {
   res.redirect('/');
 };
 
+async function init() {
+  let resource_url = await fetchResourceUrl();
+  if (resource_url) {
+  }
+}
+
 // !Logout
 
 export const logout_service = async (req, res) => {
@@ -65,7 +72,7 @@ export const logout_service = async (req, res) => {
     console.log(
       `User "${req.user.email}" last connection at: ${req.user.last_connection}`
     );
-    res.send({ redirect: 'http://localhost:8080/login' }); // la redireccion la mandamos para que la maneje el frontend
+    res.send({ redirect: `${await fetchResourceUrl()}/login` }); // la redireccion la mandamos para que la maneje el frontend
   } catch (error) {
     res.status(400).send({ error });
   }
@@ -86,7 +93,7 @@ export const emailToRestorePass_Service = async (req, res) => {
     to: email,
     subject: 'Cambia tu password',
     html: `
-    <button><a href='http://localhost:8080/restore-password'>¡Cambiá tu password haciendo click aquí!</button>
+    <button><a href='${await fetchResourceUrl()}/restore-password'>¡Cambiá tu password haciendo click aquí!</button>
   `,
   });
   res.redirect('/login');
