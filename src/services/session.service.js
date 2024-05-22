@@ -72,7 +72,7 @@ export const logout_service = async (req, res) => {
     console.log(
       `User "${req.user.email}" last connection at: ${req.user.last_connection}`
     );
-    res.send({ redirect: `${await fetchResourceUrl()}/login` }); // la redireccion la mandamos para que la maneje el frontend
+    res.send({ redirect: `/login` }); // la redireccion la mandamos para que la maneje el frontend
   } catch (error) {
     res.status(400).send({ error });
   }
