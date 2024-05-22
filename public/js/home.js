@@ -90,7 +90,7 @@ async function init() {
     const userId = userInfoContainer.getAttribute('data-user-id');
 
     const response = await fetch(
-      `http://localhost:8080/api/users/premium/own-role/${userId}`,
+      `${resource_url}/api/users/premium/own-role/${userId}`,
       {
         method: 'PUT',
       }

@@ -2,7 +2,7 @@
 
 async function fetchResourceUrl() {
   try {
-    const response = await fetch('http://localhost:8080/api/resources-url', {
+    const response = await fetch('/api/resources-url', {
       method: 'GET',
     });
     const data = await response.json();
