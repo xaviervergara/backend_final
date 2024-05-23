@@ -4,8 +4,8 @@ import { userModel } from '../DAO/models/user.model.js';
 import { createHash, isValidPassword } from '../utils/bcyrpt.js';
 import { DateTime } from 'luxon';
 import { userTimeZone } from '../config/luxon.config.js';
-import fetchResourceUrl from '../../public/js/utils.js';
 
+import { getVariables } from '../config/dotenv.config.js';
 //!Register
 
 export const register_service = async (req, res) => {
@@ -28,6 +28,7 @@ export const login_service = async (req, res) => {
   if (!req.user) {
     return res.status(400).send({ message: 'Error with credentials' });
   }
+  const { resources_url } = getVariables(options);
 
   const dt = DateTime.now();
   req.user.last_connection = dt;
@@ -47,14 +48,9 @@ export const login_service = async (req, res) => {
   console.log(
     `User "${req.user.email}" starts session at: ${req.user.last_connection}`
   );
+  console.log(`Esto es la variable resourcesURL ${resources_url}`);
   res.redirect('/');
 };
-
-async function init() {
-  let resource_url = await fetchResourceUrl();
-  if (resource_url) {
-  }
-}
 
 // !Logout
 
@@ -87,13 +83,14 @@ export const emailToRestorePass_Service = async (req, res) => {
   if (!email) {
     req.logger.error('Ingresar una dirección de correo');
   }
+  const { resources_url } = getVariables(options);
   const mailingService = new MailingService(options);
   await mailingService.sendSimpleMail({
     from: 'Coderhouse',
     to: email,
     subject: 'Cambia tu password',
     html: `
-    <button><a href='${await fetchResourceUrl()}/restore-password'>¡Cambiá tu password haciendo click aquí!</button>
+    <button><a href='${resources_url}/restore-password'>¡Cambiá tu password haciendo click aquí!</button>
   `,
   });
   res.redirect('/login');
