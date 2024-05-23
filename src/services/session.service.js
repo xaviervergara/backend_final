@@ -90,7 +90,7 @@ export const emailToRestorePass_Service = async (req, res) => {
     to: email,
     subject: 'Cambia tu password',
     html: `
-    <button><a href='${resources_url}/restore-password'>¡Cambiá tu password haciendo click aquí!</button>
+    <button><a href='${resources_url}/restore-password'>¡Cambiá tu password haciendo click aquí!</a></button>
   `,
   });
   res.redirect('/login');
